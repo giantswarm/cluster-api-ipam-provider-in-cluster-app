@@ -1,0 +1,15 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: caip-in-cluster-serving-cert
+  namespace: caip-in-cluster-system
+spec:
+  dnsNames:
+    - caip-webhook-service.{{ .Release.Namespace }}.svc
+    - caip-webhook-service.{{ .Release.Namespace }}.svc.cluster.local
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: selfsigned-giantswarm
+  secretName: caip-webhook-server-cert
