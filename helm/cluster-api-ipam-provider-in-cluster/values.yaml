@@ -1,0 +1,21 @@
+image:
+  # todo: add to retagger
+  # name: quay.io/giantswarm/cluster-api-ipam-provider-in-cluster
+  name: ghcr.io/telekom/cluster-api-ipam-provider-in-cluster
+  tag: v0.1.0-alpha.2
+
+project:
+  branch: ""
+  commit: ""
+
+crds:
+  install: true
+  jobRegistry: quay.io
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 64Mi
