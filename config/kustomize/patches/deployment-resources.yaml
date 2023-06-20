@@ -25,4 +25,4 @@ spec:
       - name: cert
         secret:
           defaultMode: 420
-          secretName: capv-webhook-server-cert
+          secretName: caip-webhook-server-cert
