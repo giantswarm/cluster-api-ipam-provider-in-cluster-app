@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/giantswarm/cluster-api-ipam-provider-in-cluster.svg?style=shield)](https://circleci.com/gh/giantswarm/cluster-api-ipam-provider-in-cluster)
+[![CircleCI](https://circleci.com/gh/giantswarm/cluster-api-ipam-provider-in-cluster-app.svg?style=shield)](https://circleci.com/gh/giantswarm/cluster-api-ipam-provider-in-cluster-app)
 
 # cluster-api-ipam-provider-in-cluster
 
