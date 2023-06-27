@@ -11,8 +11,8 @@ find config/kustomize/tmp/ -regex ".*apiextensions.k8s.io_v1_customresourcedefin
 	mv -v config/kustomize/tmp/${filename} helm/${1}/files/${filename/apiextensions.k8s.io_v1_customresourcedefinition_/}
 done
 
-find helm/${1}/files/ -regex ".*infrastructure.cluster.x-k8s.io.yaml" | while read f; do
-	mv -v ${f} ${f/infrastructure.cluster.x-k8s.io./}
+find helm/${1}/files/ -regex ".*ipam.cluster.x-k8s.io.yaml" | while read f; do
+	mv -v ${f} ${f/ipam.cluster.x-k8s.io./}
 done
 
 # move everything from current tmp workdir over to helm
