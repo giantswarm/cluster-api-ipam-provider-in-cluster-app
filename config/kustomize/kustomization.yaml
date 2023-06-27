@@ -25,6 +25,12 @@ patches:
     labelSelector: cluster.x-k8s.io/provider=ipam-in-cluster
 - patch: |-
     - op: remove
+      path: /metadata/creationTimestamp
+  target:
+    kind: CustomResourceDefinition
+    labelSelector: cluster.x-k8s.io/provider=ipam-in-cluster
+- patch: |-
+    - op: remove
       path: /spec/template/spec/volumes/0
     - op: remove
       path: /spec/template/spec/containers/0/volumeMounts/0

@@ -12,7 +12,9 @@ Content of the `/helm` directory will be bundled, released and pushed to the `ap
 
 ## Usage
 
-How to work within this repository?
+This app contains a helm chart for [`cluster-api-ipam-provider-in-cluster`](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster).
+The application itself assumes `IpAddress` and `IpAddressClaim` custom resource definitions to exist in the cluster. 
+These are installed together with common CAPI CRDs.
 
 ### apply new `kustomize` changes to the charts
 
@@ -29,6 +31,15 @@ How to work within this repository?
 2. run `make all`
 3. also make sure the tag of the container image in the default values.yaml is updated if you want to use the newly released thing
 
+### deploy the latest version of app
+```
+k gs template app --catalog control-plane-test-catalog \
+                  --name cluster-api-ipam-provider-in-cluster \
+                  --target-namespace default \
+                  --organization giantswarm \
+                  --cluster-name foo \
+                  --version <latest-released-version>-gitSHa | k apply -f -
+```
 # Useful links
 
 * [Upstream repo](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster)
