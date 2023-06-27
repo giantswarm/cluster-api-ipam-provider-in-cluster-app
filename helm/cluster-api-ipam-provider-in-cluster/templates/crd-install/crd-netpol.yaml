@@ -36,6 +36,7 @@ spec:
   - Egress
   - Ingress
 {{- if .Capabilities.APIVersions.Has "cilium.io/v2/CiliumNetworkPolicy" }}
+{{- if .Values.ciliumNetworkPolicy.enabled }}
 ---
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
@@ -57,5 +58,6 @@ spec:
   egress:
     - toEntities:
         - kube-apiserver
+{{- end }}
 {{- end }}
 {{- end }}
