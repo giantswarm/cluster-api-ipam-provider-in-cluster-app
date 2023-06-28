@@ -20,5 +20,14 @@ resources:
     cpu: 100m
     memory: 64Mi
 
+inClusterIpPool:
+  enabled: false
+  name: pool
+  # use either start & end or adresses
+  start: 10.10.222.222
+  end: 10.10.222.229
+  # addresses:
+  # - 10.10.222.223/28
+
 ciliumNetworkPolicy:
-  enabled: true
+  enabled: false
