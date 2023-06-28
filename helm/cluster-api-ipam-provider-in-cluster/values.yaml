@@ -22,7 +22,7 @@ resources:
 
 inClusterIpPool:
   enabled: false
-  name: pool
+  name: wc-cp-ips
   # use either start & end or adresses
   start: 10.10.222.222
   end: 10.10.222.229
