@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Optionally create also the `InClusterIPPool` CR when installing the controller.
+
 ## [0.0.1] - 2023-06-27
 
 ### Added
