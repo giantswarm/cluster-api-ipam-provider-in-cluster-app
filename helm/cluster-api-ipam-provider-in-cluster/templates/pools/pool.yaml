@@ -1,21 +1,20 @@
-{{- if .Values.inClusterIpPool.enabled }}
+{{- with .Values.inClusterIpPool }}
+{{- if .enabled }}
 apiVersion: ipam.cluster.x-k8s.io/v1alpha1
 kind: InClusterIPPool
 metadata:
-  name: {{ .Values.inClusterIpPool.name }}
+  name: {{ .name }}
 spec:
   gateway: 0.0.0.0
   prefix: 24
-{{- with .Values.inClusterIpPool.start }}
-  start: {{ . }}
-{{- end }}
-{{- with .Values.inClusterIpPool.end }}
-  end: {{ . }}
-{{- end }}
-{{- with .Values.inClusterIpPool.addresses }}
+{{- if .start }}
+  start: {{ .start }}
+  end: {{ .end }}
+{{- else }}
   addresses:
-  {{- range . }}
+  {{- range .addresses }}
   - {{ . }}
   {{- end }}
+{{- end }}
 {{- end }}
 {{- end }}
