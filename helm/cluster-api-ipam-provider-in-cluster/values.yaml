@@ -1,3 +1,5 @@
+enabled: true
+
 image:
   # todo: add to retagger
   # name: quay.io/giantswarm/cluster-api-ipam-provider-in-cluster

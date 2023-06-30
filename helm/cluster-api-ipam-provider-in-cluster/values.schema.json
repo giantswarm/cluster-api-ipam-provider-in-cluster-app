@@ -17,7 +17,13 @@
             "title": "CiliumNetworkPolicy",
             "description": "Should the network policy for cilium be also rendered"
         }
-    }
+      }
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": false,
+      "title": "Enabled",
+      "description": "Should the chart be rendered"
     },
     "crds": {
       "type": "object",

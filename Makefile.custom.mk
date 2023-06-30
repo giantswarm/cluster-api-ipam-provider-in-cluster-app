@@ -9,7 +9,7 @@ REPO_NAME="cluster-api-ipam-provider-in-cluster"
 TAG_TO_SYNC="v0.1.0-alpha.2"
 
 .PHONY: all
-all: fetch-upstream-manifest apply-kustomize-patches delete-generated-helm-charts release-manifests ## Builds the manifests to publish with a release (alias to release-manifests)
+all: fetch-upstream-manifest apply-kustomize-patches apply-custom-patches delete-generated-helm-charts release-manifests ## Builds the manifests to publish with a release (alias to release-manifests)
 
 .PHONY: fetch-upstream-manifest
 fetch-upstream-manifest: ## fetch upstream manifest from upstream repo
@@ -18,6 +18,10 @@ fetch-upstream-manifest: ## fetch upstream manifest from upstream repo
 .PHONY: apply-kustomize-patches
 apply-kustomize-patches: ## apply giantswarm specific patches
 	kubectl kustomize config/kustomize -o config/kustomize/tmp
+
+.PHONY: apply-custom-patches
+apply-custom-patches: ## apply giantswarm specific patches that are not possible via kustomize
+	./hack/custom-patches.sh
 
 .PHONY: delete-generated-helm-charts
 delete-generated-helm-charts: # clean workspace and delete manifests
