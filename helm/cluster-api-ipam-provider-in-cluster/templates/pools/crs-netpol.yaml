@@ -8,7 +8,7 @@ metadata:
   annotations:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-2"
-    helm.sh/hook-delete-policy: "before-hook-creation,hook-succeeded,hook-failed"
+    helm.sh/hook-delete-policy: "before-hook-creation,hook-succeeded"
 spec:
   podSelector:
     matchLabels:
@@ -41,7 +41,7 @@ metadata:
   annotations:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/hook-weight: "-2"
-    helm.sh/hook-delete-policy: "before-hook-creation,hook-succeeded,hook-failed"
+    helm.sh/hook-delete-policy: "before-hook-creation,hook-succeeded"
 spec:
   endpointSelector:
     matchLabels:
