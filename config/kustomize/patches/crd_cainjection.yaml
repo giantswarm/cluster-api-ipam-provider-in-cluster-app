@@ -5,4 +5,4 @@ kind: CustomResourceDefinition
 metadata:
   name: "ignored" # not relevant as we are applying this patch to all CAIP CRDs via labelSelector
   annotations:
-    cert-manager.io/inject-ca-from: "{{ .Release.Namespace }}/caip-serving-cert"
+    cert-manager.io/inject-ca-from: "{{ .Release.Namespace }}/caip-in-cluster-serving-cert"
