@@ -1,0 +1,54 @@
+{{- if .Values.enabled }}
+{{- if .Values.inClusterIpPool.enabled }}
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: create-in-cluster-ip-pool-job-talks-to-apiserver
+  namespace: {{ .Release.Namespace | quote }}
+  annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-weight: "-2"
+    helm.sh/hook-delete-policy: "before-hook-creation,hook-succeeded,hook-failed"
+spec:
+  podSelector:
+    matchLabels:
+      app: create-in-cluster-ip-pool
+  # allow egress traffic to the Kubernetes API
+  egress:
+  - ports:
+    - port: 443
+      protocol: TCP
+    # legacy port kept for compatibility
+    - port: 6443
+      protocol: TCP
+    to:
+    {{- range tuple "10.0.0.0/8" "172.16.0.0/12" "192.168.0.0/16" "100.64.0.0/10" }}
+    - ipBlock:
+        cidr: {{ . }}
+    {{- end }}
+  # deny ingress traffic
+  ingress: []
+  policyTypes:
+  - Egress
+  - Ingress
+{{- if .Values.ciliumNetworkPolicy.enabled }}
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: create-in-cluster-ip-pool-job-talks-to-apiserver
+  namespace: {{ .Release.Namespace | quote }}
+  annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-weight: "-2"
+    helm.sh/hook-delete-policy: "before-hook-creation,hook-succeeded,hook-failed"
+spec:
+  endpointSelector:
+    matchLabels:
+      app: create-in-cluster-ip-pool
+  egress:
+    - toEntities:
+        - kube-apiserver
+{{- end }}
+{{- end }}
+{{- end }}
