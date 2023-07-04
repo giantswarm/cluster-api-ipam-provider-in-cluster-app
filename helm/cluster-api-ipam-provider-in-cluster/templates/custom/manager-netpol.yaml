@@ -1,0 +1,64 @@
+{{- if .Values.enabled }}
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: {{ $.Release.Namespace }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: '{{ .Chart.Name }}'
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    cluster.x-k8s.io/provider: ipam-in-cluster
+    helm.sh/chart: '{{ .Chart.Name }}'
+spec:
+  podSelector:
+    matchLabels:
+      cluster.x-k8s.io/provider: ipam-in-cluster
+      control-plane: controller-manager
+  # allow egress traffic to the Kubernetes API
+  egress:
+  - ports:
+    - port: 443
+      protocol: TCP
+    # legacy port kept for compatibility
+    - port: 6443
+      protocol: TCP
+    to:
+    {{- range tuple "10.0.0.0/8" "172.16.0.0/12" "192.168.0.0/16" "100.64.0.0/10" }}
+    - ipBlock:
+        cidr: {{ . }}
+    {{- end }}
+  # deny ingress traffic
+  ingress: []
+  policyTypes:
+  - Egress
+  - Ingress
+{{- if .Values.ciliumNetworkPolicy.enabled }}
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: {{ $.Release.Namespace }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: '{{ .Chart.Name }}'
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    cluster.x-k8s.io/provider: ipam-in-cluster
+    helm.sh/chart: '{{ .Chart.Name }}'
+spec:
+  endpointSelector:
+    matchLabels:
+      cluster.x-k8s.io/provider: ipam-in-cluster
+      control-plane: controller-manager
+  egress:
+    - toEntities:
+        - kube-apiserver
+{{- end }}
+{{- end }}

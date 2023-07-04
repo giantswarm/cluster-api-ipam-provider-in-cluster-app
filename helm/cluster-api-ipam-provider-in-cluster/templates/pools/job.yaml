@@ -1,0 +1,56 @@
+{{- if .Values.enabled }}
+{{- if .Values.inClusterIpPool.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-in-cluster-ip-pool
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: create-in-cluster-ip-pool
+  annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-weight: "-1"
+    helm.sh/hook-delete-policy: "before-hook-creation,hook-succeeded,hook-failed"
+spec:
+  backoffLimit: 50
+  template:
+    metadata:
+      labels:
+        app: create-in-cluster-ip-pool
+    spec:
+      restartPolicy: OnFailure
+      serviceAccountName: install-crs
+      volumes:
+      - name: in-cluster-ip-pool
+        configMap:
+          name: in-cluster-ip-pool
+      initContainers:
+      - name: wait-crds
+        image: "quay.io/giantswarm/docker-kubectl:latest"
+        imagePullPolicy: IfNotPresent
+        command:
+        - sh
+        args:
+        - -c
+        - |
+          while ! kubectl get crd inclusterippools.ipam.cluster.x-k8s.io
+          do
+            echo "Waiting for CRD inclusterippools.ipam.cluster.x-k8s.io to exist"
+            sleep 5
+          done
+      containers:
+      - name: create-in-cluster-ip-pool
+        image: "quay.io/giantswarm/docker-kubectl:latest"
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - name: in-cluster-ip-pool
+          mountPath: /pool
+        command:
+        - sh
+        args:
+        - -c
+        - |
+          set -o errexit ; set -o xtrace ; set -o nounset
+          kubectl apply --server-side=true --field-manager='kubectl-client-side-apply' --force-conflicts -f /pool/ 2>&1
+{{- end }}
+{{- end }}
