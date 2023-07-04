@@ -14,6 +14,10 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: install-crs
+  annotations:
+    helm.sh/hook: "post-install,post-upgrade"
+    helm.sh/hook-delete-policy: "before-hook-creation,hook-succeeded"
+    helm.sh/hook-weight: "-2"
 rules:
 - apiGroups:
   - ipam.cluster.x-k8s.io
@@ -35,6 +39,10 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: install-crs
+  annotations:
+    helm.sh/hook: "post-install,post-upgrade"
+    helm.sh/hook-delete-policy: "before-hook-creation,hook-succeeded"
+    helm.sh/hook-weight: "-2"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
