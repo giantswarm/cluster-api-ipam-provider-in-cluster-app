@@ -57,6 +57,7 @@ spec:
         volumeMounts:
         - name: in-cluster-ip-pool
           mountPath: /data/pool.yaml
+          subPath: pool.yaml
         command:
         - sh
         args:
