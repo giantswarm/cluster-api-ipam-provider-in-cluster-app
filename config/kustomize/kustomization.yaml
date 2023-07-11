@@ -29,15 +29,5 @@ patches:
   target:
     kind: CustomResourceDefinition
     labelSelector: cluster.x-k8s.io/provider=ipam-in-cluster
-- patch: |-
-    - op: remove
-      path: /spec/template/spec/volumes/0
-    - op: remove
-      path: /spec/template/spec/containers/0/volumeMounts/0
-  target:
-    group: apps
-    kind: Deployment
-    name: caip-in-cluster-controller-manager
-    version: v1
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization

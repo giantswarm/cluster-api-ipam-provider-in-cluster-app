@@ -12,4 +12,4 @@ spec:
     group: cert-manager.io
     kind: ClusterIssuer
     name: selfsigned-giantswarm
-  secretName: caip-webhook-server-cert
+  secretName: caip-in-cluster-webhook-service-cert
