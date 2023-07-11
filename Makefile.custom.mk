@@ -9,7 +9,7 @@ REPO_NAME="cluster-api-ipam-provider-in-cluster"
 TAG_TO_SYNC="v0.1.0-alpha.2"
 
 .PHONY: all
-all: fetch-upstream-manifest apply-kustomize-patches apply-custom-patches delete-generated-helm-charts release-manifests ## Builds the manifests to publish with a release (alias to release-manifests)
+all: fetch-upstream-manifest apply-kustomize-patches delete-generated-helm-charts release-manifests apply-custom-patches ## Builds the manifests to publish with a release (alias to release-manifests)
 
 .PHONY: fetch-upstream-manifest
 fetch-upstream-manifest: ## fetch upstream manifest from upstream repo
