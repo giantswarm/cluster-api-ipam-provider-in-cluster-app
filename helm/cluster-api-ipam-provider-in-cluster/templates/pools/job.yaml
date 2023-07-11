@@ -63,7 +63,14 @@ spec:
         args:
         - -c
         - |
-          set -o errexit ; set -o xtrace ; set -o nounset
-          kubectl apply --server-side=true --field-manager='kubectl-client-side-apply' --force-conflicts -f /data/ 2>&1
+          set -o nounset
+          for i in $(seq 20)
+          do
+            kubectl apply -f /data/ 2>&1 && exit 0
+            _sec=$(echo "1.5^$i" | bc)
+            echo "Waiting ${_sec} seconds.."
+            sleep ${_sec}
+          done
+          exit 1
 {{- end }}
 {{- end }}
