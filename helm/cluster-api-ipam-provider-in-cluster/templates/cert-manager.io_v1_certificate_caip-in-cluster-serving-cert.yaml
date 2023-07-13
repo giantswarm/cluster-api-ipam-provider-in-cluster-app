@@ -15,8 +15,8 @@ metadata:
   namespace: '{{ .Release.Namespace }}'
 spec:
   dnsNames:
-  - caip-webhook-service.{{ .Release.Namespace }}.svc
-  - caip-webhook-service.{{ .Release.Namespace }}.svc.cluster.local
+  - caip-in-cluster-webhook-service.{{ .Release.Namespace }}.svc
+  - caip-in-cluster-webhook-service.{{ .Release.Namespace }}.svc.cluster.local
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer
