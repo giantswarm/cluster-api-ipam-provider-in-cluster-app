@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Network policy (cilium and normal) for webhooks.
+
 ## [0.0.6] - 2023-07-12
 
 ## [0.0.5] - 2023-07-11

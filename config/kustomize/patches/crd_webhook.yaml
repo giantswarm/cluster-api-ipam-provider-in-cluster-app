@@ -13,5 +13,5 @@ spec:
       clientConfig:
         service:
           namespace: "{{ .Release.Namespace }}"
-          name: caip-webhook-service
+          name: caip-in-cluster-webhook-service
           path: /convert
