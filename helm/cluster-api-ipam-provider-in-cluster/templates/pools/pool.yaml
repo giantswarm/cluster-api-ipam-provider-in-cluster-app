@@ -13,7 +13,7 @@ metadata:
 data:
   content: |
     apiVersion: ipam.cluster.x-k8s.io/v1alpha1
-    kind: InClusterIPPool
+    kind: GlobalInClusterIPPool
     metadata:
       name: {{ .name }}
     spec:
