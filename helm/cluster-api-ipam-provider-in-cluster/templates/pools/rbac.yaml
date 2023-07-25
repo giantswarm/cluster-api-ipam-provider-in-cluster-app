@@ -23,6 +23,7 @@ rules:
   - ipam.cluster.x-k8s.io
   resources:
   - inclusterippools
+  - globalinclusterippools
   verbs:
   - patch
   - create
@@ -35,6 +36,7 @@ rules:
   - get
   resourceNames:
   - inclusterippools.ipam.cluster.x-k8s.io
+  - globalinclusterippools.ipam.cluster.x-k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
