@@ -12,22 +12,20 @@ metadata:
     helm.sh/hook-weight: "-2"
 data:
   content: |
-    apiVersion: ipam.cluster.x-k8s.io/v1alpha1
+    apiVersion: ipam.cluster.x-k8s.io/v1alpha2
     kind: GlobalInClusterIPPool
     metadata:
       name: {{ .name }}
     spec:
       gateway: 0.0.0.0
       prefix: 24
-    {{- if .start }}
-      start: {{ .start }}
-      end: {{ .end }}
-    {{- else }}
       addresses:
+      {{- if .start }}
+      - {{ .start }}-{{ .end }}
+      {{- end }}
       {{- range .addresses }}
       - {{ . }}
       {{- end }}
-    {{- end }}
 {{- end }}
 {{- end }}
 {{- end }}

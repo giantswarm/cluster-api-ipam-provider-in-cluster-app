@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Switched from api `v1alpha1` to `v1alpha2`. Using the latest unreleased version that has the GlobalInClusterIPPool cross-namespace functionality fixed.
+
 ## [0.0.9] - 2023-07-13
 
 ## [0.0.8] - 2023-07-13
