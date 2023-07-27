@@ -61,10 +61,19 @@ spec:
             memory: '{{ .Values.resources.requests.memory }}'
         securityContext:
           allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsGroup: 65532
+          runAsUser: 65532
         volumeMounts:
         - mountPath: /tmp/k8s-webhook-server/serving-certs
           name: cert
           readOnly: true
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       serviceAccountName: caip-in-cluster-controller-manager
       terminationGracePeriodSeconds: 10
       tolerations:
