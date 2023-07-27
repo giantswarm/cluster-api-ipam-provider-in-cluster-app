@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- :seedling: GH action that verifies if `make all` was run (drift detection).
+- :seedling: `sync-version.sh` now can sync also to a given git sha.
+
+### Changed
+
+- :boom: **Breaking:** Switched from api `v1alpha1` to `v1alpha2`. Using the latest unreleased version that has the GlobalInClusterIPPool cross-namespace functionality fixed.
+
 ## [0.0.10] - 2023-07-25
 
 ## [0.0.9] - 2023-07-13

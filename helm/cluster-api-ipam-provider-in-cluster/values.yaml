@@ -1,10 +1,9 @@
 enabled: true
 
 image:
-  # todo: add to retagger
-  # name: quay.io/giantswarm/cluster-api-ipam-provider-in-cluster
-  name: ghcr.io/telekom/cluster-api-ipam-provider-in-cluster
-  tag: v0.1.0-alpha.2
+  name: quay.io/giantswarm/cluster-api-ipam-provider-in-cluster
+  # todo: switch back to latest released image once they release
+  tag: 80ec908
 
 project:
   branch: ""

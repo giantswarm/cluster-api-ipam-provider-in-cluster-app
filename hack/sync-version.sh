@@ -12,8 +12,11 @@ TAG="${3}"
 TMPDIR=$(mktemp -d)
 pushd "${TMPDIR}"
 
-git clone --depth=1 --branch "${TAG}" "https://github.com/${UPSTREAM_ORG}/${REPO_NAME}.git"
+git clone --depth=1 --branch "${TAG}" "https://github.com/${UPSTREAM_ORG}/${REPO_NAME}.git" || {
+    git clone "https://github.com/${UPSTREAM_ORG}/${REPO_NAME}.git"
+}
 pushd "${REPO_NAME}"
+git reset --hard ${TAG}
 make release-manifests
 
 # remove ${REPO_NAME} from the stack
