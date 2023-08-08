@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- NetworkPolicy for webhooks allows anyone to talk to caip manager.
+
 ## [0.0.11] - 2023-07-27
 
 ### Added

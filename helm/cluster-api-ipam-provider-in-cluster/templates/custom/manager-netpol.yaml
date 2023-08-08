@@ -50,8 +50,7 @@ metadata:
     helm.sh/chart: '{{ .Chart.Name }}'
 spec:
   ingress:
-  - from:
-    - namespaceSelector: {}
+  - {}
   podSelector:
     matchLabels:
       cluster.x-k8s.io/provider: ipam-in-cluster
