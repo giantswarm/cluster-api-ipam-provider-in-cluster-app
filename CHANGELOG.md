@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.12] - 2023-08-08
+
 ### Changed
 
 - NetworkPolicy for webhooks allows anyone to talk to caip manager.
@@ -59,7 +61,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add this app
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.11...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.12...HEAD
+[0.0.12]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.11...v0.0.12
 [0.0.11]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.10...v0.0.11
 [0.0.10]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.9...v0.0.10
 [0.0.9]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.8...v0.0.9
