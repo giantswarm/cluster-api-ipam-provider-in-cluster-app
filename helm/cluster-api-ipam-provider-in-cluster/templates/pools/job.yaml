@@ -24,6 +24,9 @@ spec:
       securityContext:
         runAsUser: 1000
         runAsGroup: 2000
+        {{- with .Values.podSecurityContext }}
+        {{- . | toYaml | nindent 8 }}
+        {{- end }}
       tolerations:
       - key: node-role.kubernetes.io/master
         effect: NoSchedule
@@ -48,6 +51,10 @@ spec:
             echo "Waiting for CRD inclusterippools.ipam.cluster.x-k8s.io to exist"
             sleep 5
           done
+        {{- with .Values.containerSecurityContext }}
+        securityContext:
+          {{- . | toYaml | nindent 10 }}
+        {{- end }}
       containers:
       - name: create-in-cluster-ip-pool
         image: "quay.io/giantswarm/docker-kubectl:latest"
@@ -72,5 +79,9 @@ spec:
             sleep ${_sec}
           done
           exit 1
+        {{- with .Values.containerSecurityContext }}
+        securityContext:
+          {{- . | toYaml | nindent 10 }}
+        {{- end }}
 {{- end }}
 {{- end }}
