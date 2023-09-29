@@ -25,6 +25,19 @@
       "title": "Enabled",
       "description": "Should the chart be rendered"
     },
+    "global": {
+      "type": "object",
+      "properties": {
+          "podSecurityStandards": {
+              "type": "object",
+              "properties": {
+                  "enforced": {
+                      "type": "boolean"
+                  }
+              }
+          }
+      }
+    },
     "crds": {
       "type": "object",
       "properties": {
