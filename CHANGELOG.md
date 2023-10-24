@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.12] - 2023-10-24
 
+## [0.0.12] - 2023-10-24
+
 ### Added
 
 - PSS compliance
@@ -68,6 +70,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add this app
 
 [Unreleased]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.12...HEAD
+[0.0.12]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.12...v0.0.12
 [0.0.12]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.12...v0.0.12
 [0.0.12]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.11...v0.0.12
 [0.0.11]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.10...v0.0.11
