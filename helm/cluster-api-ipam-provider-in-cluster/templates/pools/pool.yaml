@@ -1,10 +1,11 @@
 {{- if .Values.enabled }}
 {{- with .Values.inClusterIpPool }}
 {{- if .enabled }}
+{{- range .pools }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: in-cluster-ip-pool
+  name: ip-pool-{{ .name }}
   namespace: {{ $.Release.Namespace }}
   annotations:
     helm.sh/hook: "post-install,post-upgrade"
@@ -26,6 +27,8 @@ data:
       {{- range .addresses }}
       - {{ . }}
       {{- end }}
+---
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}

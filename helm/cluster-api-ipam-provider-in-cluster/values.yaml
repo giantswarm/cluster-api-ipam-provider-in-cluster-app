@@ -23,12 +23,16 @@ resources:
 
 inClusterIpPool:
   enabled: false
-  name: wc-cp-ips
-  # use either start & end or adresses
-  start: 10.10.222.222
-  end: 10.10.222.229
-  # addresses:
-  # - 10.10.222.223/28
+  pools:
+  - name: wc-cp-ips
+    # use either start & end or adresses
+    start: 10.10.222.222
+    end: 10.10.222.225
+    # addresses:
+    # - 10.10.222.223/28
+  - name: svc-lb-ips
+    start: 10.10.222.226
+    end: 10.10.222.229
 
 ciliumNetworkPolicy:
   enabled: false
