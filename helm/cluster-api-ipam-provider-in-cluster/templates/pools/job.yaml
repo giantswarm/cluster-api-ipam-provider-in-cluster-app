@@ -37,7 +37,7 @@ spec:
         configMap:
           name: ip-pool-{{ .name }}
           items:
-          - key: {{ .name }}
+          - key: content
             path: {{ .name }}.yaml
       {{- end }}
       initContainers:
