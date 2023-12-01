@@ -8,9 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
 ### Changed
 
 - Using the released image (it's the same as before, but nicer tag)
+
+## [0.1.0] - 2023-10-31
+
 
 ## [0.0.12] - 2023-10-24
 
@@ -73,7 +77,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add this app
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.12...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.12...v0.1.0
 [0.0.12]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.12...v0.0.12
 [0.0.12]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.12...v0.0.12
 [0.0.12]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.11...v0.0.12
