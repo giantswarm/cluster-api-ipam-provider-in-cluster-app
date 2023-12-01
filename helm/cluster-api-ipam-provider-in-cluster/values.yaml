@@ -2,8 +2,7 @@ enabled: true
 
 image:
   name: quay.io/giantswarm/cluster-api-ipam-provider-in-cluster
-  # todo: switch back to latest released image once they release
-  tag: 80ec908
+  tag: v0.1.0-alpha.3
 
 project:
   branch: ""
