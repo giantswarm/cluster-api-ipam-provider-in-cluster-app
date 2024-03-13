@@ -5,8 +5,8 @@ metadata:
   name: caip-in-cluster-controller-manager
   namespace: {{ .Release.Namespace | quote }}
   labels:
-    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
-    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    application.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    application.giantswarm.io/commit: '{{ .Values.project.commit }}'
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/name: '{{ .Chart.Name }}'
@@ -40,8 +40,8 @@ metadata:
   name: allow-caip-webhooks
   namespace: {{ .Release.Namespace | quote }}
   labels:
-    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
-    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    application.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    application.giantswarm.io/commit: '{{ .Values.project.commit }}'
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/name: '{{ .Chart.Name }}'
@@ -65,8 +65,8 @@ metadata:
   name: caip-in-cluster-controller-manager
   namespace: {{ .Release.Namespace | quote }}
   labels:
-    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
-    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    application.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    application.giantswarm.io/commit: '{{ .Values.project.commit }}'
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/name: '{{ .Chart.Name }}'
@@ -88,8 +88,8 @@ metadata:
   name: allow-caip-webhooks
   namespace: {{ .Release.Namespace | quote }}
   labels:
-    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
-    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    application.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    application.giantswarm.io/commit: '{{ .Values.project.commit }}'
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/name: '{{ .Chart.Name }}'
