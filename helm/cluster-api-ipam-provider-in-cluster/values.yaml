@@ -1,7 +1,7 @@
 enabled: true
 
 image:
-  name: quay.io/giantswarm/cluster-api-ipam-provider-in-cluster
+  name: gsoci.azurecr.io/giantswarm/cluster-api-ipam-provider-in-cluster
   # todo: switch back to latest released image once they release
   tag: 80ec908
 
