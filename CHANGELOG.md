@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2024-05-22
+
 ### Changed
 
 - Pull image from Azure CR.
@@ -75,7 +77,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add this app
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.12...v0.1.0
 [0.0.12]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.12...v0.0.12
 [0.0.12]: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app/compare/v0.0.12...v0.0.12
