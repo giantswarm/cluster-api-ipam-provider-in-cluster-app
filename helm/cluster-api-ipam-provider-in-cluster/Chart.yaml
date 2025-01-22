@@ -1,14 +1,20 @@
 apiVersion: v2
-version: [[ .Version ]]
-appVersion: "v0.0.1"
 name: cluster-api-ipam-provider-in-cluster
 description: A Helm chart for cluster-api-ipam-provider-in-cluster
-engine: gotpl
+version: 0.0.1-dev
+appVersion: 0.0.1-dev
 home: https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app
+icon: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
 sources:
   - https://github.com/giantswarm/cluster-api-ipam-provider-in-cluster-app
 annotations:
   application.giantswarm.io/team: "rocket"
+  config.giantswarm.io/version: 1.x.x
+  ui.giantswarm.io/logo: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
+restrictions:
+  clusterSingleton: true
+  fixedNamespace: kube-system
+  gpuInstances: false
 maintainers:
   - name: Team Rocket
     email: team-rocket@giantswarm.io

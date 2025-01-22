@@ -1,4 +1,5 @@
 enabled: true
+serviceType: managed
 
 image:
   name: gsoci.azurecr.io/giantswarm/cluster-api-ipam-provider-in-cluster
