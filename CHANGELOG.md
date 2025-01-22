@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Update renovate to json5 config.
+- Migrate to App Build Suite.
+- Update CircleCI config to use app-build-suite executor.
 
 ## [0.1.1] - 2024-05-22
 
