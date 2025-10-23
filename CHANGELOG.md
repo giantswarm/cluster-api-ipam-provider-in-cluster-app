@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update renovate to json5 config.
 
+### Fixed
+
+- Add missing RBAC permission for `ipaddressclaims/finalizers` subresource required by `OwnerReferencesPermissionEnforcement` admission controller (enabled by default in Kubernetes 1.33+).
+
 ## [0.1.1] - 2024-05-22
 
 ### Changed

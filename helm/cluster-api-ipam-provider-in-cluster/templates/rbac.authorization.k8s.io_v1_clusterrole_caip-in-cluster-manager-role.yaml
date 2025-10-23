@@ -112,4 +112,10 @@ rules:
   - patch
   - update
   - watch
+- apiGroups:
+  - ipam.cluster.x-k8s.io
+  resources:
+  - ipaddressclaims/finalizers
+  verbs:
+  - update
 {{- end }}
