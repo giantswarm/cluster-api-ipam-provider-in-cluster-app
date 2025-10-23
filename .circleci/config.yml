@@ -41,7 +41,7 @@ workflows:
         app_name: cluster-api-ipam-provider-in-cluster
         app_collection_repo: vsphere-addons-app-collection
         requires:
-        - push-to-app-catalog
+        - push-to-control-plane-app-catalog
         filters:
           branches:
             ignore: /.*/
@@ -54,7 +54,7 @@ workflows:
         app_name: cluster-api-ipam-provider-in-cluster
         app_collection_repo: vsphere-aws-addons-app-collection
         requires:
-        - push-to-app-catalog
+        - push-to-control-plane-app-catalog
         filters:
           branches:
             ignore: /.*/
