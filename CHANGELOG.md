@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Add `node-role.kubernetes.io/control-plane` toleration.
+
 ## [0.1.2] - 2025-10-23
 
 ### Changed
