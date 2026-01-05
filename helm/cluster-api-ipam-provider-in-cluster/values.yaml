@@ -5,9 +5,6 @@ image:
   # todo: switch back to latest released image once they release
   tag: 80ec908
 
-project:
-  branch: ""
-  commit: ""
 
 crds:
   install: true
