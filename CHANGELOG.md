@@ -7,9 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add `.crds.jobTag` with default value `1.34.4` used by the CRD installer job. Was using the `latest` tag before.
+- Add resource limits and requests to the CRD job.
+- Expose the `8081` port on `caip-in-cluster-controller-manager`.
+
 ### Changed
 
 - Migrate to App Build Suite (ABS).
+- Bump `architect-orb` to `v6.14.1`.
+- Enable `readOnlyRootFilesystem` on `caip-in-cluster-controller-manager`.
+
+### Removed
+
+- Remove all `application.giantswarm.io/branch` labels.
+- Remove all `application.giantswarm.io/commit` labels.
 
 ## [0.1.3] - 2025-12-09
 

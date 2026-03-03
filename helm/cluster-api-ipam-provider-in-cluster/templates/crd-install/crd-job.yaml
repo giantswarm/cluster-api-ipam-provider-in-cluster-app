@@ -35,7 +35,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: kubectl
-        image: "{{ .Values.crds.jobRegistry }}/giantswarm/docker-kubectl:latest"
+        image: "{{ .Values.crds.jobRegistry }}/giantswarm/docker-kubectl:{{ .Values.crds.jobTag }}"
         command:
         - sh
         - -c
@@ -44,6 +44,7 @@ spec:
           # piping stderr to stdout means kubectl's errors are surfaced
           # in the pod's logs.
           kubectl apply -f /data/ 2>&1
+        resources: {{- toYaml .Values.crds.resources | nindent 10 }}
         securityContext:
           readOnlyRootFilesystem: true
           {{- with .Values.containerSecurityContext }}
@@ -55,7 +56,6 @@ spec:
           mountPath: /data/{{ $path | base }}
           subPath: {{ $path | base }}
 {{- end }}
-        resources: {{- toYaml .Values.crds.resources | nindent 10 }}
       volumes:
 {{ $currentScope := . }}
 {{- range $path, $_ := .Files.Glob "files/**" }}

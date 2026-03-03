@@ -8,7 +8,15 @@ image:
 
 crds:
   install: true
-  jobRegistry: quay.io
+  jobRegistry: gsoci.azurecr.io
+  jobTag: 1.34.4
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 750m
+      memory: 1024Mi
 
 resources:
   limits:

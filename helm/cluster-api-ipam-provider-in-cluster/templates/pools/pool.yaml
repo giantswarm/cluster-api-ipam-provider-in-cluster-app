@@ -18,8 +18,6 @@ data:
     metadata:
       name: {{ .name }}
       labels:
-        application.giantswarm.io/branch: '{{ $.Values.project.branch }}'
-        application.giantswarm.io/commit: '{{ $.Values.project.commit }}'
         app.kubernetes.io/instance: '{{ $.Release.Name }}'
         app.kubernetes.io/managed-by: '{{ $.Release.Service }}'
         app.kubernetes.io/name: '{{ $.Chart.Name }}'

@@ -7,8 +7,6 @@ metadata:
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/name: '{{ .Chart.Name }}'
     app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
-    application.giantswarm.io/branch: '{{ .Values.project.branch }}'
-    application.giantswarm.io/commit: '{{ .Values.project.commit }}'
     cluster.x-k8s.io/provider: ipam-in-cluster
     control-plane: controller-manager
     helm.sh/chart: '{{ .Chart.Name }}'
@@ -43,6 +41,9 @@ spec:
           periodSeconds: 20
         name: manager
         ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
         - containerPort: 9443
           name: webhook-server
           protocol: TCP
@@ -64,6 +65,7 @@ spec:
           capabilities:
             drop:
             - ALL
+          readOnlyRootFilesystem: true
           runAsGroup: 65532
           runAsUser: 65532
         volumeMounts:
