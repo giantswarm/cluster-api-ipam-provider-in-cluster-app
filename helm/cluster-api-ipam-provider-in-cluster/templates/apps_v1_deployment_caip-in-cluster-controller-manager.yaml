@@ -44,6 +44,9 @@ spec:
         - containerPort: 9443
           name: webhook-server
           protocol: TCP
+        - containerPort: 8081
+          name: http
+          protocol: TCP
         readinessProbe:
           httpGet:
             path: /readyz
@@ -58,6 +61,7 @@ spec:
             cpu: '{{ .Values.resources.requests.cpu }}'
             memory: '{{ .Values.resources.requests.memory }}'
         securityContext:
+          readOnlyRootFilesystem: true
           allowPrivilegeEscalation: false
           capabilities:
             drop:
