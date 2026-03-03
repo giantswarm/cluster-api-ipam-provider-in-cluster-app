@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Migrate to App Build Suite (ABS).
+- Bump `architect-orb` to `v6.14.1`.
+
+### Removed
+
+- Remove all `application.giantswarm.io/branch` labels.
+- Remove all `application.giantswarm.io/commit` labels.
 
 ## [0.1.3] - 2025-12-09
 
