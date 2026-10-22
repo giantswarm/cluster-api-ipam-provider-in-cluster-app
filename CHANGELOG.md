@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- The in-cluster IP pool Job pulls `docker-kubectl` from `crds.jobRegistry` at `crds.jobTag` (default `1.34.4`, the same image as the CRD install Job) instead of `quay.io/giantswarm/docker-kubectl:latest`, which no longer pulls since the quay.io org was removed. `crds.jobTag` is now declared in the values schema.
 - The `helm.sh/chart` label is valid for long chart versions: the 63-character cut trims the whole trailing run of `-`, `.` and `_`.
 
 ## [0.1.4] - 2026-03-03
