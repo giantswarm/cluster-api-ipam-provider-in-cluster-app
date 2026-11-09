@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update architect to v10.11.1 (giantswarm/cluster-api-ipam-provider-in-cluster-app#124)
 - Update architect to v10.13.1 (giantswarm/cluster-api-ipam-provider-in-cluster-app#129)
+- Update architect to v10.17.4 (giantswarm/cluster-api-ipam-provider-in-cluster-app#146)
 
 ### Fixed
 
