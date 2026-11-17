@@ -1,0 +1,13 @@
+---
+# Patch to add ipaddressclaims/finalizers permission required by OwnerReferencesPermissionEnforcement admission controller
+# This admission controller (enabled by default in k8s v1.33+) requires that to set blockOwnerDeletion on an ownerReference,
+# the service account must have update permission on the finalizers subresource of the referenced owner.
+- op: add
+  path: /rules/-
+  value:
+    apiGroups:
+    - ipam.cluster.x-k8s.io
+    resources:
+    - ipaddressclaims/finalizers
+    verbs:
+    - update

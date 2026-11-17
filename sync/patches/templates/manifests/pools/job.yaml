@@ -1,0 +1,95 @@
+{{- if .Values.enabled }}
+{{- if .Values.inClusterIpPool.enabled }}
+{{- if .Values.inClusterIpPool.pools }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-in-cluster-ip-pools
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: create-in-cluster-ip-pools
+  annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-weight: "-1"
+    helm.sh/hook-delete-policy: "before-hook-creation,hook-succeeded"
+spec:
+  ttlSecondsAfterFinished: 43200 # 12h
+  backoffLimit: 4
+  template:
+    metadata:
+      labels:
+        app: create-in-cluster-ip-pools
+    spec:
+      restartPolicy: Never
+      serviceAccountName: install-crs
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 2000
+        {{- with .Values.podSecurityContext }}
+        {{- . | toYaml | nindent 8 }}
+        {{- end }}
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      - key: node-role.kubernetes.io/control-plane
+        effect: NoSchedule
+      volumes:
+      {{- range .Values.inClusterIpPool.pools }}
+      - name: ip-pool-{{ .name }}
+        configMap:
+          name: ip-pool-{{ .name }}
+          items:
+          - key: content
+            path: {{ .name }}.yaml
+      {{- end }}
+      initContainers:
+      - name: wait-crds
+        image: "{{ .Values.crds.jobRegistry }}/giantswarm/docker-kubectl:{{ .Values.crds.jobTag }}"
+        imagePullPolicy: IfNotPresent
+        command:
+        - sh
+        args:
+        - -c
+        - |
+          while ! kubectl get crd inclusterippools.ipam.cluster.x-k8s.io
+          do
+            echo "Waiting for CRD inclusterippools.ipam.cluster.x-k8s.io to exist"
+            sleep 5
+          done
+        {{- with .Values.containerSecurityContext }}
+        securityContext:
+          {{- . | toYaml | nindent 10 }}
+        {{- end }}
+      containers:
+      - name: create-in-cluster-ip-pools
+        image: "{{ .Values.crds.jobRegistry }}/giantswarm/docker-kubectl:{{ .Values.crds.jobTag }}"
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          readOnlyRootFilesystem: true
+        volumeMounts:
+        {{- range .Values.inClusterIpPool.pools }}
+        - name: ip-pool-{{ .name }}
+          mountPath: /data/{{ .name }}.yaml
+          subPath: {{ .name }}.yaml
+        {{- end }}
+        command:
+        - sh
+        args:
+        - -c
+        - |
+          set -o nounset
+          for i in $(seq 20)
+          do
+            kubectl apply -f /data/ 2>&1 && exit 0
+            _sec=$(echo "1.5^$i" | bc)
+            echo "Waiting ${_sec} seconds.."
+            sleep ${_sec}
+          done
+          exit 1
+        {{- with .Values.containerSecurityContext }}
+        securityContext:
+          {{- . | toYaml | nindent 10 }}
+        {{- end }}
+{{- end }}
+{{- end }}
+{{- end }}
