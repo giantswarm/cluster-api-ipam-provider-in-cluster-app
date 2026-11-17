@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: '{{ .Release.Namespace }}'
+
+resources:
+- tmp/input/ipam-components.yaml
+
+transformers:
+- patches/transformer-common-labels.yaml
+- patches/transformer-monitoring-annotations.yaml
+
+patches:
+- path: patches/add-certificate.yaml
+- path: patches/add-deployment-resources.yaml
+- path: patches/add-webhook-certificate.yaml
+- path: patches/delete-issuer.yaml
+- path: patches/delete-namespace.yaml
+- path: patches/add-crd-cainjection.yaml
+  target:
+    kind: CustomResourceDefinition
+    labelSelector: cluster.x-k8s.io/provider=ipam-in-cluster
+- path: patches/add-crd-webhook.yaml
+  target:
+    kind: CustomResourceDefinition
+    labelSelector: cluster.x-k8s.io/provider=ipam-in-cluster
+- path: patches/add-ipaddressclaim-finalizers-rbac.yaml
+  target:
+    kind: ClusterRole
+    name: caip-in-cluster-manager-role

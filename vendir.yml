@@ -1,0 +1,12 @@
+apiVersion: vendir.k14s.io/v1alpha1
+kind: Config
+directories:
+  - path: vendor
+    contents:
+      - path: cluster-api-ipam-provider-in-cluster
+        githubRelease:
+          slug: clastix/cluster-api-control-plane-provider-kamaji
+          slug: kubernetes-sigs/cluster-api-ipam-provider-in-cluster
+          tag: "v0.1.0-alpha.3"
+          assetNames: ["ipam-components.yaml"]
+          disableAutoChecksumValidation: true
