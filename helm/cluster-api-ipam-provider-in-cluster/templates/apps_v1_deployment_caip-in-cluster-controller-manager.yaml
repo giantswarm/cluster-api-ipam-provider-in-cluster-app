@@ -32,7 +32,7 @@ spec:
         command:
         - /manager
         image: '{{.Values.image.name}}:{{.Values.image.tag}}'
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
             path: /healthz
