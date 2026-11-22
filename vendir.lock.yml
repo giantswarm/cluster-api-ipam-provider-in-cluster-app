@@ -2,8 +2,8 @@ apiVersion: vendir.k14s.io/v1alpha1
 directories:
 - contents:
   - githubRelease:
-      tag: v0.1.0-alpha.3
-      url: https://api.github.com/repos/kubernetes-sigs/cluster-api-ipam-provider-in-cluster/releases/114805259
+      tag: v1.1.1
+      url: https://api.github.com/repos/kubernetes-sigs/cluster-api-ipam-provider-in-cluster/releases/389796950
     path: cluster-api-ipam-provider-in-cluster
   path: vendor
 kind: LockConfig
