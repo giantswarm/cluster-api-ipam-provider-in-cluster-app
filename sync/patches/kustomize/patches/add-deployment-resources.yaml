@@ -2,8 +2,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: caip-in-cluster-controller-manager
-  namespace: caip-in-cluster-system
+  name: capi-ipam-in-cluster-controller-manager
+  namespace: capi-ipam-in-cluster-system
 spec:
   template:
     spec:
@@ -25,10 +25,13 @@ spec:
             - containerPort: 8081
               name: http
               protocol: TCP
+            - containerPort: 8443
+              name: https
+              protocol: TCP
           securityContext:
             readOnlyRootFilesystem: true
       volumes:
       - name: cert
         secret:
           defaultMode: 420
-          secretName: caip-in-cluster-webhook-service-cert
+          secretName: capi-ipam-in-cluster-webhook-service-cert

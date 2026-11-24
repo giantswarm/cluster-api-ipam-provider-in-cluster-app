@@ -1,6 +1,6 @@
 {{- if .Values.enabled }}
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+kind: RoleBinding
 metadata:
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -9,10 +9,14 @@ metadata:
     app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
     cluster.x-k8s.io/provider: ipam-in-cluster
     helm.sh/chart: '{{ .Chart.Name }}'
-  name: caip-in-cluster-metrics-reader
-rules:
-- nonResourceURLs:
-  - /metrics
-  verbs:
-  - get
+  name: capi-ipam-in-cluster-leader-election-rolebinding
+  namespace: '{{ .Release.Namespace }}'
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: capi-ipam-in-cluster-leader-election-role
+subjects:
+- kind: ServiceAccount
+  name: capi-ipam-in-cluster-controller-manager
+  namespace: '{{ .Release.Namespace }}'
 {{- end }}

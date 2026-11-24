@@ -22,6 +22,6 @@ metadata:
     app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
     cluster.x-k8s.io/provider: ipam-in-cluster
     helm.sh/chart: '{{ .Chart.Name }}'
-  name: caip-in-cluster-manager-config
+  name: capi-ipam-in-cluster-manager-config
   namespace: '{{ .Release.Namespace }}'
 {{- end }}

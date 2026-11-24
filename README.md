@@ -16,20 +16,19 @@ This app contains a helm chart for [`cluster-api-ipam-provider-in-cluster`](http
 The application itself assumes `IpAddress` and `IpAddressClaim` custom resource definitions to exist in the cluster. 
 These are installed together with common CAPI CRDs.
 
+The [`sync/sync.sh`](sync/sync.sh) script generates the chart. It needs `vendir`, `kustomize`, `yq`, `jq` and `helm`.
+
 ### apply new `kustomize` changes to the charts
 
-1. if not already done, run `make fetch-upstream-manifest` (only has to be done once)
-   > upstream manifest will be stored in [`config/kustomize/input`](config/kustomize/input)
-1. write your desired changes as kustomize patches in [config/kustomize]
-1. run `make apply-kustomize-patches` to apply the changes\n
-   > this will generate a patched version under [`config/kustomize/tmp`](config/kustomize/tmp)
-1. once you're done, run `make release-manifests` to move all relevant files into the [`helm/cluster-api-ipam-provider-in-cluster`](helm/cluster-api-ipam-provider-in-cluster) folder
+1. Write your changes as kustomize patches in [`sync/patches/kustomize`](sync/patches/kustomize).
+1. Run `./sync/sync.sh` to generate the chart in [`helm/cluster-api-ipam-provider-in-cluster`](helm/cluster-api-ipam-provider-in-cluster).
 
-### update to a newer CAIP release
+### update to a newer upstream release
 
-1. edit the value of `TAG_TO_SYNC` in [the Makefile](Makefile.custom.mk) to the desired commit to pin in the source repo.
-2. run `make all`
-3. also make sure the tag of the container image in the default values.yaml is updated if you want to use the newly released thing
+Renovate updates the release tag in [`vendir.yml`](vendir.yml). The `Sync vendir changes` workflow then runs `./sync/sync.sh` on the Renovate branch.
+
+1. Make sure that the image tag in [`sync/patches/values/manifests/values.yaml`](sync/patches/values/manifests/values.yaml) agrees with the new release. The sync does not change it.
+1. Run `./sync/sync.sh` again if you change the image tag.
 
 ### deploy the latest version of app
 ```

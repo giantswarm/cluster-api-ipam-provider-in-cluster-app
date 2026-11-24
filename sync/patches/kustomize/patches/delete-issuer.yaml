@@ -4,5 +4,5 @@ $patch: delete
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: caip-in-cluster-selfsigned-issuer
-  namespace: caip-in-cluster-system
+  name: capi-ipam-in-cluster-selfsigned-issuer
+  namespace: capi-ipam-in-cluster-system

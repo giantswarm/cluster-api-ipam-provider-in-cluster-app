@@ -2,19 +2,27 @@
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    giantswarm.io/monitoring-path: /metrics
+    giantswarm.io/monitoring-port: "8443"
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/name: '{{ .Chart.Name }}'
     app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
     cluster.x-k8s.io/provider: ipam-in-cluster
+    control-plane: controller-manager
+    giantswarm.io/monitoring: "true"
     helm.sh/chart: '{{ .Chart.Name }}'
-  name: caip-in-cluster-webhook-service
+  name: capi-ipam-in-cluster-controller-manager-metrics-service
   namespace: '{{ .Release.Namespace }}'
 spec:
   ports:
-  - port: 443
-    targetPort: webhook-server
+  - name: https
+    port: 8443
+    protocol: TCP
+    targetPort: https
   selector:
     cluster.x-k8s.io/provider: ipam-in-cluster
+    control-plane: controller-manager
 {{- end }}
