@@ -12,10 +12,3 @@ rm -rf "${CHART_DIR}" || true
 
 # Create the template dir
 mkdir -p "${CHART_DIR}"/templates
-
-# Create the CRD install template dir
-mkdir -p "${CRD_INSTALL_DIR}"
-
-# Create the files dir to hold the CRDs
-mkdir -p "${CHART_DIR}"/files
-

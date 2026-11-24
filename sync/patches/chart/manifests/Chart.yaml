@@ -17,4 +17,6 @@ maintainers:
     email: team-rocket@giantswarm.io
 sources:
   - https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster
-
+dependencies:
+  - name: cluster-api-ipam-provider-in-cluster-crds
+    version: CRD_VERSION_PLACEHOLDER

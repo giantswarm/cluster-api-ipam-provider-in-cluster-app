@@ -20,5 +20,5 @@ VALUES_YAML="${CHART_DIR}"/values.yaml ; readonly VALUES_YAML
 # Chart.yaml in chart dir
 CHART_YAML="${CHART_DIR}"/Chart.yaml ; readonly CHART_YAML
 
-# dir for crd-install templates
-CRD_INSTALL_DIR="${CHART_DIR}"/templates/crd-install ; readonly CRD_INSTALL_DIR
+# root dir of the CRD dependency chart
+CRD_CHART_DIR="${CHART_DIR}/charts/cluster-api-ipam-provider-in-cluster-crds" ; readonly CRD_CHART_DIR

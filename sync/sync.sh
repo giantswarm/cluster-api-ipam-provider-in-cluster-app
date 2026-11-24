@@ -30,3 +30,6 @@ vendir sync
 ./sync/patches/templates/patch.sh
 ./sync/patches/helpers/patch.sh
 ./sync/patches/values/patch.sh
+
+# crds should always be last
+./sync/patches/crds/patch.sh

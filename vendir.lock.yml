@@ -6,4 +6,8 @@ directories:
       url: https://api.github.com/repos/kubernetes-sigs/cluster-api-ipam-provider-in-cluster/releases/389796950
     path: cluster-api-ipam-provider-in-cluster
   path: vendor
+- contents:
+  - directory: {}
+    path: .
+  path: sync/patches/kustomize/tmp/input
 kind: LockConfig
