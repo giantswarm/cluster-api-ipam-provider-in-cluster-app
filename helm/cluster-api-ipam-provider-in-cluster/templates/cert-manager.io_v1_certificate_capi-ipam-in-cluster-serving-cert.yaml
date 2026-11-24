@@ -9,17 +9,17 @@ metadata:
     app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
     cluster.x-k8s.io/provider: ipam-in-cluster
     helm.sh/chart: '{{ .Chart.Name }}'
-  name: caip-in-cluster-serving-cert
+  name: capi-ipam-in-cluster-serving-cert
   namespace: '{{ .Release.Namespace }}'
 spec:
   dnsNames:
-  - caip-in-cluster-webhook-service.{{ .Release.Namespace }}.svc
-  - caip-in-cluster-webhook-service.{{ .Release.Namespace }}.svc.cluster.local
+  - capi-ipam-in-cluster-webhook-service.{{ .Release.Namespace }}.svc
+  - capi-ipam-in-cluster-webhook-service.{{ .Release.Namespace }}.svc.cluster.local
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer
     name: selfsigned-giantswarm
-  secretName: caip-in-cluster-webhook-service-cert
+  secretName: capi-ipam-in-cluster-webhook-service-cert
   subject:
     organizations:
     - k8s-sig-cluster-lifecycle

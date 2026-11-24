@@ -10,7 +10,7 @@ metadata:
     cluster.x-k8s.io/provider: ipam-in-cluster
     control-plane: controller-manager
     helm.sh/chart: '{{ .Chart.Name }}'
-  name: caip-in-cluster-controller-manager
+  name: capi-ipam-in-cluster-controller-manager
   namespace: '{{ .Release.Namespace }}'
 spec:
   replicas: 1
@@ -44,6 +44,9 @@ spec:
         - containerPort: 8081
           name: http
           protocol: TCP
+        - containerPort: 8443
+          name: https
+          protocol: TCP
         - containerPort: 9443
           name: webhook-server
           protocol: TCP
@@ -76,7 +79,7 @@ spec:
         runAsNonRoot: true
         seccompProfile:
           type: RuntimeDefault
-      serviceAccountName: caip-in-cluster-controller-manager
+      serviceAccountName: capi-ipam-in-cluster-controller-manager
       terminationGracePeriodSeconds: 10
       tolerations:
       - effect: NoSchedule
@@ -86,5 +89,5 @@ spec:
       - name: cert
         secret:
           defaultMode: 420
-          secretName: caip-in-cluster-webhook-service-cert
+          secretName: capi-ipam-in-cluster-webhook-service-cert
 {{- end }}

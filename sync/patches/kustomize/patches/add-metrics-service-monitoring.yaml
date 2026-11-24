@@ -1,0 +1,12 @@
+---
+# Mark the metrics service for scraping by the Giant Swarm monitoring.
+apiVersion: v1
+kind: Service
+metadata:
+  name: capi-ipam-in-cluster-controller-manager-metrics-service
+  namespace: capi-ipam-in-cluster-system
+  labels:
+    giantswarm.io/monitoring: "true"
+  annotations:
+    giantswarm.io/monitoring-path: /metrics
+    giantswarm.io/monitoring-port: "8443"

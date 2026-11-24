@@ -2,7 +2,7 @@
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: caip-in-cluster-controller-manager
+  name: capi-ipam-in-cluster-controller-manager
   namespace: {{ .Release.Namespace | quote }}
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -35,7 +35,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-caip-webhooks
+  name: allow-capi-ipam-in-cluster-webhooks
   namespace: {{ .Release.Namespace | quote }}
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -58,7 +58,7 @@ spec:
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: caip-in-cluster-controller-manager
+  name: capi-ipam-in-cluster-controller-manager
   namespace: {{ .Release.Namespace | quote }}
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -79,7 +79,7 @@ spec:
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: allow-caip-webhooks
+  name: allow-capi-ipam-in-cluster-webhooks
   namespace: {{ .Release.Namespace | quote }}
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'

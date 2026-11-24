@@ -1,9 +1,8 @@
 enabled: true
 
 image:
-  name: gsoci.azurecr.io/giantswarm/cluster-api-ipam-provider-in-cluster
-  # todo: switch back to latest released image once they release
-  tag: 80ec908
+  name: gsoci.azurecr.io/giantswarm/cluster-api-ipam-in-cluster-controller
+  tag: v1.1.1
 
 
 crds:
