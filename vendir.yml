@@ -9,3 +9,10 @@ directories:
           tag: "v1.1.1"
           assetNames: ["ipam-components.yaml"]
           disableAutoChecksumValidation: true
+  # Copy the vanilla manifest next to the kustomization so that kustomize can
+  # load it without relaxing its load restrictor.
+  - path: sync/patches/kustomize/tmp/input
+    contents:
+      - path: .
+        directory:
+          path: vendor/cluster-api-ipam-provider-in-cluster
